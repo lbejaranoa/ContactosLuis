@@ -19,6 +19,7 @@
 		71E722481821B170004626A7 /* FormularioContactoViewControlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E722461821B170004626A7 /* FormularioContactoViewControlerViewController.m */; };
 		71E722491821B170004626A7 /* FormularioContactoViewControlerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71E722471821B170004626A7 /* FormularioContactoViewControlerViewController.xib */; };
 		71E7224D1821C4C4004626A7 /* OMCContacto.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E7224C1821C4C4004626A7 /* OMCContacto.m */; };
+		71E7225018230A28004626A7 /* ListaContactosViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E7224F18230A28004626A7 /* ListaContactosViewControler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		71E722471821B170004626A7 /* FormularioContactoViewControlerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FormularioContactoViewControlerViewController.xib; path = ../FormularioContactoViewControlerViewController.xib; sourceTree = "<group>"; };
 		71E7224B1821C4C4004626A7 /* OMCContacto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMCContacto.h; sourceTree = "<group>"; };
 		71E7224C1821C4C4004626A7 /* OMCContacto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCContacto.m; sourceTree = "<group>"; };
+		71E7224E18230A28004626A7 /* ListaContactosViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaContactosViewControler.h; sourceTree = "<group>"; };
+		71E7224F18230A28004626A7 /* ListaContactosViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaContactosViewControler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +91,11 @@
 			children = (
 				71E722451821B170004626A7 /* FormularioContactoViewControlerViewController.h */,
 				71E722461821B170004626A7 /* FormularioContactoViewControlerViewController.m */,
+				71E722471821B170004626A7 /* FormularioContactoViewControlerViewController.xib */,
+				71E7224E18230A28004626A7 /* ListaContactosViewControler.h */,
+				71E7224F18230A28004626A7 /* ListaContactosViewControler.m */,
 				71E7224B1821C4C4004626A7 /* OMCContacto.h */,
 				71E7224C1821C4C4004626A7 /* OMCContacto.m */,
-				71E722471821B170004626A7 /* FormularioContactoViewControlerViewController.xib */,
 				71E722371821AE97004626A7 /* OMCAppDelegate.h */,
 				71E722381821AE97004626A7 /* OMCAppDelegate.m */,
 				71E7222F1821AE97004626A7 /* Supporting Files */,
@@ -183,6 +188,7 @@
 				71E722391821AE97004626A7 /* OMCAppDelegate.m in Sources */,
 				71E722481821B170004626A7 /* FormularioContactoViewControlerViewController.m in Sources */,
 				71E7224D1821C4C4004626A7 /* OMCContacto.m in Sources */,
+				71E7225018230A28004626A7 /* ListaContactosViewControler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +303,7 @@
 				71E722441821AE97004626A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,12 +7,20 @@
 //
 
 #import "FormularioContactoViewControlerViewController.h"
-#import "OMCContacto.h";
+#import "OMCContacto.h"
 @interface FormularioContactoViewControlerViewController ()
 
 @end
 
 @implementation FormularioContactoViewControlerViewController
+
+-(id)init{
+    self=[super init];
+    if(self){
+        self.aContactos=[[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,11 +58,25 @@
     [contacto setObject:site forKey:@"site"];
     NSLog(@"Contacto adicionado: %@",contacto);
 */
-    OMCContacto * contacto=[[OMCContacto alloc] init];
+    //OMCContacto * contacto=[[OMCContacto alloc] init];
+       
+    //[self.view endEditing:YES];
+    //NSLog(@"Contacto adicionado:%@",contacto);
+    //capitulo 6
+    //NSMutableArray *aNomes=[[NSMutableArray alloc] initWithObjects:@"fulano",@"beltrano",@"ciltrano",nil];
+    //[aNomes addObject:@"Wayne"];
+    //[aNomes addObject:@"Ballmer"];
+    //NSLog(@"Nomes: %@",self.aContactos);
+    OMCContacto *contacto=[[OMCContacto alloc] init];
     contacto.nome=self.OutLetName.text;
     contacto.email=self.OutLetEmail.text;
-    [self.view endEditing:YES];
-    NSLog(@"Contacto adicionado:%@",contacto);
+    [self.aContactos addObject:contacto];
+    NSLog(@"Nomes: %@",self.aContactos[0]);
+    for(int i=0; i<[self.aContactos count];i++)
+    {
+//       contacto *c=[[self.aContactos indexOfAccessibilityElement:i];
+    }
+    
 }
 
 

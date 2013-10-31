@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *OutLetEndereco;
 @property (weak, nonatomic) IBOutlet UITextField *OutLetEmail;
 @property (weak, nonatomic) IBOutlet UITextField *OutLetSite;
+@property (strong,nonatomic) NSMutableArray *aContactos;
 - (IBAction)proximoElemento:(UITextField *)campoActual;
 
 @end

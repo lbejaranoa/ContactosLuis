@@ -8,7 +8,7 @@
 
 #import "OMCAppDelegate.h"
 #import "FormularioContactoViewControlerViewController.h"
-
+#import "ListaContactosViewControler.h"
 @implementation OMCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,8 +17,14 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] init];
-    self.window.rootViewController=form;
+    ListaContactosViewControler * lista=[[ListaContactosViewControler alloc] init];
+    lista.navigationItem.title=@"Contactosinit";
+
+    UINavigationController * nav=[[UINavigationController alloc] initWithRootViewController:lista];
+    
+//    FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] init];
+//    self.window.rootViewController=form;
+    self.window.rootViewController=nav;
     return YES;
 }
 
