@@ -7,6 +7,7 @@
 //
 
 #import "OMCAppDelegate.h"
+#import "FormularioContactoViewControlerViewController.h"
 
 @implementation OMCAppDelegate
 
@@ -16,6 +17,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] init];
+    self.window.rootViewController=form;
     return YES;
 }
 
