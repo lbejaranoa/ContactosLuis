@@ -13,12 +13,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.aContactos=[[NSMutableArray alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     ListaContactosViewControler * lista=[[ListaContactosViewControler alloc] init];
     lista.navigationItem.title=@"Contactosinit";
+    lista.aContactos=self.aContactos;
 
     UINavigationController * nav=[[UINavigationController alloc] initWithRootViewController:lista];
     

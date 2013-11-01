@@ -13,11 +13,14 @@
 @end
 
 @implementation FormularioContactoViewControlerViewController
-
 -(id)init{
     self=[super init];
     if(self){
-        self.aContactos=[[NSMutableArray alloc] init];
+//        self.aContactos=[[NSMutableArray alloc] init];
+        self.navigationItem.title=@"cadastro";
+        UIBarButtonItem * btnCadastro=[[UIBarButtonItem alloc] initWithTitle:@"Adiciona" style:UIBarButtonItemStylePlain target:self action:@selector(criaContacto)];
+        //[self.navigationItem.rightBarButtonItem=btnCadastro];
+        self.navigationItem.rightBarButtonItem=btnCadastro;
     }
     return self;
 }
@@ -43,7 +46,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)pegaDadosDoFormulario:(id)sender {
+- (OMCContacto *)pegaDadosDoFormulario {
     /*
     NSString * nome=self.OutLetName.text;
     NSString * telefone=self.OutLetTelefono.text;
@@ -68,14 +71,22 @@
     //[aNomes addObject:@"Ballmer"];
     //NSLog(@"Nomes: %@",self.aContactos);
     OMCContacto *contacto=[[OMCContacto alloc] init];
+//    OMCContacto *contacto=[self pegaDadosDoFormulario];
     contacto.nome=self.OutLetName.text;
     contacto.email=self.OutLetEmail.text;
-    [self.aContactos addObject:contacto];
-    NSLog(@"Nomes: %@",self.aContactos[0]);
-    for(int i=0; i<[self.aContactos count];i++)
-    {
-//       contacto *c=[[self.aContactos indexOfAccessibilityElement:i];
-    }
+    return contacto;
+//    [self.aContactos addObject:contacto];
+//    NSLog(@"Nomes: %@",self.aContactos[0]);
+//    for(int i=0; i<[self.aContactos count];i++)
+//    {
+////       contacto *c=[[self.aContactos indexOfAccessibilityElement:i];
+//    }
+//    for(OMCContacto * c in self.aContactos)
+//    {
+//        NSLog(@"nome:%@",c.nome);
+//    }
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    
     
 }
 
@@ -92,5 +103,16 @@
     else{
         [campoActual resignFirstResponder];
     }
+}
+
+-(void)criaContacto{
+    OMCContacto *contacto=[self pegaDadosDoFormulario];
+    [self.aContactos addObject:contacto];
+//    NSLog(@"Nomes: %@",self.aContactos[0]);
+    for(OMCContacto * c in self.aContactos)
+    {
+        NSLog(@"nome:%@",c.nome);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

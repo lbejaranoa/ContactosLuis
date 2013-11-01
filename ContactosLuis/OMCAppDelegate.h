@@ -11,5 +11,5 @@
 @interface OMCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong,nonatomic) NSMutableArray *aContactos;
 @end

@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface ListaContactosViewControler : UITableViewController
-
+@property (weak,nonatomic) NSMutableArray *aContactos;
 @end
