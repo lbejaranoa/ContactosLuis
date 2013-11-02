@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OMCContacto.h"
 @interface FormularioContactoViewControlerViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *OutLetName;
 @property (weak, nonatomic) IBOutlet UITextField *OutLetTelefono;
@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *OutLetEmail;
 @property (weak, nonatomic) IBOutlet UITextField *OutLetSite;
 @property (weak,nonatomic) NSMutableArray *aContactos;
+@property (strong) OMCContacto * contacto;
 - (IBAction)proximoElemento:(UITextField *)campoActual;
-
+-(id)initWithContacto:(OMCContacto *)contacto;
 @end

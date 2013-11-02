@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OMCContacto : NSObject
+@interface OMCContacto : NSObject <NSCoding>
 
 @property (strong,nonatomic) NSString * nome;
 @property (strong,nonatomic) NSString * telefono;

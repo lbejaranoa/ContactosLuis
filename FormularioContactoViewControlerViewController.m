@@ -7,7 +7,6 @@
 //
 
 #import "FormularioContactoViewControlerViewController.h"
-#import "OMCContacto.h"
 @interface FormularioContactoViewControlerViewController ()
 
 @end
@@ -22,9 +21,19 @@
         //[self.navigationItem.rightBarButtonItem=btnCadastro];
         self.navigationItem.rightBarButtonItem=btnCadastro;
     }
+    
     return self;
 }
-
+-(id)initWithContacto:(OMCContacto *)contacto{
+    self=[super init];
+    if(self){
+        self.contacto=contacto;
+        self.navigationItem.title=@"Alteracion";UIBarButtonItem * btnCadastro=[[UIBarButtonItem alloc] initWithTitle:@"Altera" style:UIBarButtonItemStylePlain target:self action:@selector(alterContacto)];
+        //[self.navigationItem.rightBarButtonItem=btnCadastro];
+        self.navigationItem.rightBarButtonItem=btnCadastro;
+    }
+    return self;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +46,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(self.contacto)
+    {
+        self.OutLetName.text=self.contacto.nome;
+        self.OutLetTelefono.text=self.contacto.nome;
+        
+        
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -70,11 +86,13 @@
     //[aNomes addObject:@"Wayne"];
     //[aNomes addObject:@"Ballmer"];
     //NSLog(@"Nomes: %@",self.aContactos);
-    OMCContacto *contacto=[[OMCContacto alloc] init];
+    if(!self.contacto){
+        self.contacto=[[OMCContacto alloc] init];
+    }
 //    OMCContacto *contacto=[self pegaDadosDoFormulario];
-    contacto.nome=self.OutLetName.text;
-    contacto.email=self.OutLetEmail.text;
-    return contacto;
+    self.contacto.nome=self.OutLetName.text;
+    self.contacto.email=self.OutLetEmail.text;
+    return self.contacto;
 //    [self.aContactos addObject:contacto];
 //    NSLog(@"Nomes: %@",self.aContactos[0]);
 //    for(int i=0; i<[self.aContactos count];i++)
@@ -113,6 +131,10 @@
     {
         NSLog(@"nome:%@",c.nome);
     }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)alterContacto{
+    [self pegaDadosDoFormulario];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

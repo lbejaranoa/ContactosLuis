@@ -12,4 +12,5 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong,nonatomic) NSMutableArray *aContactos;
+@property (strong) NSString * nomeArquivo;
 @end

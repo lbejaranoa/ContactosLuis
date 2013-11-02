@@ -4,16 +4,16 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ContactosLuis/ListaContactosViewControler.m"
-         timestampString = "404959764.440762"
+         filePath = "ContactosLuis/OMCContacto.m"
+         timestampString = "405041696.301477"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
+         landmarkName = "-initWithCoder:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
