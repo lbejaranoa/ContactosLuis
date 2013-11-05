@@ -7,6 +7,7 @@
 //
 
 #import "FormularioContactoViewControlerViewController.h"
+
 @interface FormularioContactoViewControlerViewController ()
 
 @end
@@ -125,16 +126,24 @@
 
 -(void)criaContacto{
     OMCContacto *contacto=[self pegaDadosDoFormulario];
-    [self.aContactos addObject:contacto];
+    
+//    [self.aContactos addObject:contacto];
 //    NSLog(@"Nomes: %@",self.aContactos[0]);
-    for(OMCContacto * c in self.aContactos)
-    {
-        NSLog(@"nome:%@",c.nome);
-    }
+//    for(OMCContacto * c in self.aContactos)
+//    {
+//        NSLog(@"nome:%@",c.nome);
+//    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)alterContacto{
+//    [self pegaDadosDoFormulario];
+//    [self.navigationController popViewControllerAnimated:YES];
     [self pegaDadosDoFormulario];
+    if([self.delegate respondsToSelector:@selector(contactoAlterado)])
+    {
+        [self.delegate contactoAlterado:self.contacto];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

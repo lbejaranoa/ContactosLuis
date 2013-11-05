@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FormularioContactoViewControlerViewControllerDelegate.h"
 
-@interface ListaContactosViewControler : UITableViewController
+@interface ListaContactosViewControler : UITableViewController <FormularioContactoViewControlerDelegate,UIActionSheetDelegate>
+{
+    OMCContacto * contactoSeleccionado;
+}
+@property NSInteger linhaSeleccionada;
 @property (weak,nonatomic) NSMutableArray *aContactos;
 @end

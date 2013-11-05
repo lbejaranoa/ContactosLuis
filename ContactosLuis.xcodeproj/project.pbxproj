@@ -20,6 +20,7 @@
 		71E722491821B170004626A7 /* FormularioContactoViewControlerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71E722471821B170004626A7 /* FormularioContactoViewControlerViewController.xib */; };
 		71E7224D1821C4C4004626A7 /* OMCContacto.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E7224C1821C4C4004626A7 /* OMCContacto.m */; };
 		71E7225018230A28004626A7 /* ListaContactosViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E7224F18230A28004626A7 /* ListaContactosViewControler.m */; };
+		71EC6EA8182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC6EA7182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		71E7224C1821C4C4004626A7 /* OMCContacto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCContacto.m; sourceTree = "<group>"; };
 		71E7224E18230A28004626A7 /* ListaContactosViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaContactosViewControler.h; sourceTree = "<group>"; };
 		71E7224F18230A28004626A7 /* ListaContactosViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaContactosViewControler.m; sourceTree = "<group>"; };
+		71EC6EA6182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormularioContactoViewControlerViewControllerDelegate.h; sourceTree = "<group>"; };
+		71EC6EA7182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormularioContactoViewControlerViewControllerDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 		71E7222E1821AE97004626A7 /* ContactosLuis */ = {
 			isa = PBXGroup;
 			children = (
+				71EC6EA6182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.h */,
+				71EC6EA7182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.m */,
 				71E722451821B170004626A7 /* FormularioContactoViewControlerViewController.h */,
 				71E722461821B170004626A7 /* FormularioContactoViewControlerViewController.m */,
 				71E722471821B170004626A7 /* FormularioContactoViewControlerViewController.xib */,
@@ -189,6 +194,7 @@
 				71E722481821B170004626A7 /* FormularioContactoViewControlerViewController.m in Sources */,
 				71E7224D1821C4C4004626A7 /* OMCContacto.m in Sources */,
 				71E7225018230A28004626A7 /* ListaContactosViewControler.m in Sources */,
+				71EC6EA8182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
