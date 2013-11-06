@@ -15,5 +15,5 @@
 @property (strong,nonatomic) NSString * email;
 @property (strong,nonatomic) NSString * endereco;
 @property (strong,nonatomic) NSString * site;
-
+@property(strong) UIImage * foto;
 @end

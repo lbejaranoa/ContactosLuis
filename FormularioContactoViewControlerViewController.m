@@ -35,6 +35,29 @@
     }
     return self;
 }
+
+- (IBAction)selecionaFoto:(id)sender {
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        UIImagePickerController * picker=[[UIImagePickerController alloc]init];
+        //le decimos que la imagen viene de la camara
+        picker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //permite editar imagen
+        picker.allowsEditing=YES;
+        // mostramos en modal para escojer imagen
+        [self presentViewController:picker animated: YES completion:nil];
+    }
+    else{
+        UIImagePickerController * picker=[[UIImagePickerController alloc]init];
+        //le decimos que la imagen viene de la galeria
+        picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+        //permite editar imagen
+        picker.allowsEditing=YES;
+        picker.delegate=self;
+        // mostramos en modal para escojer imagen
+        [self presentViewController:picker animated: YES completion:nil];
+    }
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,13 +69,20 @@
 
 - (void)viewDidLoad
 {
+    //este es el evento que muestra la pantalla
     [super viewDidLoad];
     if(self.contacto)
     {
         self.OutLetName.text=self.contacto.nome;
-        self.OutLetTelefono.text=self.contacto.nome;
-        
-        
+        self.OutLetTelefono.text=self.contacto.telefono;
+        self.OutLetEmail.text=self.contacto.email;
+        self.OutLetSite.text=self.contacto.site;
+        self.OutLetEndereco.text=self.contacto.endereco;
+    }
+    
+    //verificamos la foto para mostrarla
+    if(self.contacto.foto){
+        [self.botaoFoto setImage:self.contacto.foto forState:UIControlStateNormal];
     }
     // Do any additional setup after loading the view from its nib.
 }
@@ -77,7 +107,7 @@
     [contacto setObject:email forKey:@"email"];
     [contacto setObject:site forKey:@"site"];
     NSLog(@"Contacto adicionado: %@",contacto);
-*/
+     */
     //OMCContacto * contacto=[[OMCContacto alloc] init];
        
     //[self.view endEditing:YES];
@@ -90,23 +120,28 @@
     if(!self.contacto){
         self.contacto=[[OMCContacto alloc] init];
     }
-//    OMCContacto *contacto=[self pegaDadosDoFormulario];
+    //verificamos si usuario escojio foto
+    if(self.botaoFoto.imageView.image){
+        self.contacto.foto=self.botaoFoto.imageView.image;
+    }
+    //OMCContacto *contacto=[self pegaDadosDoFormulario];
     self.contacto.nome=self.OutLetName.text;
     self.contacto.email=self.OutLetEmail.text;
+    self.contacto.site=self.OutLetSite.text;
+    self.contacto.endereco=self.OutLetEndereco.text;
+    self.contacto.telefono=self.OutLetTelefono.text;
     return self.contacto;
-//    [self.aContactos addObject:contacto];
-//    NSLog(@"Nomes: %@",self.aContactos[0]);
-//    for(int i=0; i<[self.aContactos count];i++)
-//    {
-////       contacto *c=[[self.aContactos indexOfAccessibilityElement:i];
-//    }
-//    for(OMCContacto * c in self.aContactos)
-//    {
-//        NSLog(@"nome:%@",c.nome);
-//    }
+    //[self.aContactos addObject:contacto];
+    //NSLog(@"Nomes: %@",self.aContactos[0]);
+    //for(int i=0; i<[self.aContactos count];i++)
+    //{
+        //contacto *c=[[self.aContactos indexOfAccessibilityElement:i];
+    //}
+    //for(OMCContacto * c in self.aContactos)
+    //{
+    //  NSLog(@"nome:%@",c.nome);
+    //}
     //[self dismissViewControllerAnimated:YES completion:nil];
-    
-    
 }
 
 
@@ -127,23 +162,33 @@
 -(void)criaContacto{
     OMCContacto *contacto=[self pegaDadosDoFormulario];
     
-//    [self.aContactos addObject:contacto];
-//    NSLog(@"Nomes: %@",self.aContactos[0]);
-//    for(OMCContacto * c in self.aContactos)
-//    {
-//        NSLog(@"nome:%@",c.nome);
-//    }
-    
+    //[self.aContactos addObject:contacto];
+    //NSLog(@"Nomes: %@",self.aContactos[0]);
+    //for(OMCContacto * c in self.aContactos)
+    //{
+        //NSLog(@"nome:%@",c.nome);
+    //}
+    if ([self.delegate respondsToSelector:@selector(contactoAdicionado:)]) {
+        [self.delegate contactoAdicionado:contacto];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)alterContacto{
-//    [self pegaDadosDoFormulario];
-//    [self.navigationController popViewControllerAnimated:YES];
+    //[self pegaDadosDoFormulario];
+    //[self.navigationController popViewControllerAnimated:YES];
     [self pegaDadosDoFormulario];
-    if([self.delegate respondsToSelector:@selector(contactoAlterado)])
+    if([self.delegate respondsToSelector:@selector(contactoAlterado:)])
     {
         [self.delegate contactoAlterado:self.contacto];
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage * foto=info[UIImagePickerControllerEditedImage];
+    //seleccion foto
+    [self.botaoFoto setImage:foto forState:UIControlStateNormal];
+    //cerramos modal
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 @end

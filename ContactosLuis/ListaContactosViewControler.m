@@ -13,14 +13,17 @@
 
 -(id)init{
     self=[super init];
-//    UILo
      self.linhaSeleccionada=-1;
     if(self){
-        
         self.navigationItem.title=@"Contactos";
         UIBarButtonItem * btnNav=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(exibeForm)];
         self.navigationItem.rightBarButtonItem=btnNav;
         self.navigationItem.leftBarButtonItem=self.editButtonItem;
+        //creamos la imagen que vamos a usar en el tab
+        UIImage * img = [UIImage imageNamed:@"lista-contatos.png"];
+        //colocamos nombre del tab de navegacion inferior el tag sirve para leer cual es el tab actual
+        UITabBarItem * tabItem=[[UITabBarItem alloc]initWithTitle: @"Contacts" image:img tag:0];
+        self.tabBarItem=tabItem;
     }
     return self;
 }
@@ -54,14 +57,19 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(self.linhaSeleccionada>-1){
+   [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if(self.linhaSeleccionada >- 1){
         NSIndexPath * ip=[NSIndexPath indexPathForRow:self.linhaSeleccionada inSection:0];
         [self.tableView selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionNone];
         [self.tableView scrollToRowAtIndexPath:ip atScrollPosition: UITableViewScrollPositionNone animated: YES];
         self.linhaSeleccionada=-1;
     }
-//    [self.tableView reloadData];
 }
+
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(editingStyle==UITableViewCellEditingStyleDelete){
         [self.aContactos removeObjectAtIndex:indexPath.row];
@@ -78,6 +86,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     OMCContacto * contacto=self.aContactos[indexPath.row];
     FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] initWithContacto:contacto];
+    form.delegate = self;
     [self.navigationController pushViewController:form animated:YES];
 }
 -(void) contactoAdicionado:(OMCContacto *)Contato{
@@ -88,8 +97,8 @@
 }
 -(void) contactoAlterado:(OMCContacto *)Contato{
     self.linhaSeleccionada=[self.aContactos indexOfObject:Contato];
-    //    NSInteger indice=[self.aContactos indexOfObject:contato];
-//    NSLog(@"Indice do contato: %d",indice);
+    //NSInteger indice=[self.aContactos indexOfObject:contato];
+    //NSLog(@"Indice do contato: %d",indice);
 }
 -(void) viewDidLoad{
     UILongPressGestureRecognizer * gr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(exibeAcoes:)];
@@ -97,7 +106,7 @@
 }
 
 -(void)exibeAcoes:(UIGestureRecognizer *) gesture{
-//se puede colocar en diferentes momentos de la accion
+    //se puede colocar en diferentes momentos de la accion
     if(gesture.state==UIGestureRecognizerStateBegan)
     {
         //no es un objeto es una struct
@@ -127,7 +136,7 @@
     [self abrirUrl:contactoSeleccionado.site];
 }
 -(void)abrirMapa{
-//    reemplazamos los caracateres especiales
+    //reemplazamos los caracateres especiales
     NSString * urlMapa=[[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@",contactoSeleccionado.endereco] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self abrirUrl:urlMapa];
 }
@@ -137,7 +146,7 @@
             [self ligar];
             break;
         case 1:
-//            [self enviarEmail];
+            [self enviarEmail];
             break;
         case 2:
             [self visualizarSite];
@@ -148,5 +157,25 @@
         default:
             break;
     }
+}
+-(void) enviarEmail{
+    //consultamos si podemos mandar email
+    if([MFMailComposeViewController canSendMail]){
+        MFMailComposeViewController * mail=[[MFMailComposeViewController alloc] init];
+        //seteamos delegate para obtener respuesta
+        mail.mailComposeDelegate=self; //esto precisa asignacion de contrato
+        //llamamos a un modal, muestra a tela de mail
+        [mail setToRecipients:@[contactoSeleccionado.email]];
+        [mail setSubject:@"caelum"];
+        [self presentViewController:mail animated:YES completion:nil];
+    }
+    else{
+        //mostramos alert de error
+    }
+}
+//implementacion de delegate mail
+-(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    //retiramos pantalla de error si es que existiera
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

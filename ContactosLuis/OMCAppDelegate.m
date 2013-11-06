@@ -9,6 +9,7 @@
 #import "OMCAppDelegate.h"
 #import "FormularioContactoViewControlerViewController.h"
 #import "ListaContactosViewControler.h"
+#import "ContactosNoMapaViewControler.h"
 @implementation OMCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -29,11 +30,27 @@
     lista.navigationItem.title=@"Contactosinit";
     lista.aContactos=self.aContactos;
 
+    //muestra formulario inicial
     UINavigationController * nav=[[UINavigationController alloc] initWithRootViewController:lista];
     
-//    FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] init];
-//    self.window.rootViewController=form;
-    self.window.rootViewController=nav;
+    //creacion de view mapa
+    ContactosNoMapaViewControler * mapa=[[ContactosNoMapaViewControler alloc]init];
+    
+    //colocamos mapa en barra
+    UINavigationController * navMapa=[[UINavigationController alloc]initWithRootViewController:mapa];
+    
+    
+    //creacion de tabbar controler
+    UITabBarController * tabs=[[UITabBarController alloc]init];
+    //colocamos las view controlers
+    //tabs.viewControllers=@[nav,mapa];
+    tabs.viewControllers=@[nav,navMapa];
+    //envio al controlador principal
+    self.window.rootViewController=tabs;
+    
+    //FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] init];
+    //self.window.rootViewController=form;
+    
     return YES;
 }
 

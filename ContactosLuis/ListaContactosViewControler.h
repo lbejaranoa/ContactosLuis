@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MessageUI/MessageUI.h>
 #import "FormularioContactoViewControlerViewControllerDelegate.h"
-
-@interface ListaContactosViewControler : UITableViewController <FormularioContactoViewControlerDelegate,UIActionSheetDelegate>
-{
-    OMCContacto * contactoSeleccionado;
-}
+//adicionamos los contratos del delgate, se tiene que implementar los mensajes de los delegates
+@interface ListaContactosViewControler : UITableViewController <FormularioContactoViewControlerDelegate,UIActionSheetDelegate,MFMailComposeViewControllerDelegate>
+    {
+        OMCContacto * contactoSeleccionado;
+    }
 @property NSInteger linhaSeleccionada;
 @property (weak,nonatomic) NSMutableArray *aContactos;
 @end
