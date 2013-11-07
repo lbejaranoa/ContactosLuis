@@ -10,5 +10,5 @@
 #import <MapKit/MapKit.h>
 @interface ContactosNoMapaViewControler : UIViewController
 @property (weak, nonatomic) IBOutlet MKMapView *outLetMapa;
-
+@property (weak,nonatomic) NSMutableArray *aContactos;
 @end

@@ -45,6 +45,7 @@
     //creamos mktrackingbar butot
     MKUserTrackingBarButtonItem * btn = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.outLetMapa];
     self.navigationItem.leftBarButtonItem=btn;
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -54,4 +55,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    //invocamos a super para no quitar funcionalidad heredada
+    [super viewWillAppear:animated];
+    //utilizamod delegate para cargar los contactos del mapa 
+    //    NSArray * coordenadas=[[NSArray alloc]init];
+    [self.outLetMapa addAnnotations: self.aContactos];
+    
+}
+-(void) viewWillDisappear:(BOOL)animated{
+    //invocamos super
+    [super viewWillDisappear:animated];
+    //quitamos los contactos del mapa
+    [self.outLetMapa removeAnnotation: self.aContactos];
+}
 @end

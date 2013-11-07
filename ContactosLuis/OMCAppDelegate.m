@@ -36,6 +36,9 @@
     //creacion de view mapa
     ContactosNoMapaViewControler * mapa=[[ContactosNoMapaViewControler alloc]init];
     
+    //inyectamos dependencia
+    mapa.aContactos=self.aContactos;
+    
     //colocamos mapa en barra
     UINavigationController * navMapa=[[UINavigationController alloc]initWithRootViewController:mapa];
     

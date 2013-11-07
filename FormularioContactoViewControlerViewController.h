@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OMCContacto.h"
 #import "FormularioContactoViewControlerViewControllerDelegate.h"
+#import <CoreLocation/CoreLocation.h>
 //adicionamos dos contratos para tratamiento de imangen
 @interface FormularioContactoViewControlerViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -22,6 +23,11 @@
 @property (weak)id<FormularioContactoViewControlerDelegate> delegate;
 - (IBAction)proximoElemento:(UITextField *)campoActual;
 -(id)initWithContacto:(OMCContacto *)contacto;
+- (IBAction)buscarCoordenada:(id)sender;
 - (IBAction)selecionaFoto:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *outLetLatitude;
+@property (weak, nonatomic) IBOutlet UIButton *outLetBotonUbicar;
+@property (weak, nonatomic) IBOutlet UITextField *outLetLongitude;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *outLetActivitiIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *botaoFoto;
 @end

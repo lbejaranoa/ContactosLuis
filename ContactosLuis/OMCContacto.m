@@ -10,6 +10,18 @@
 
 @implementation OMCContacto
 
+//adicionamos getter de propiedades de contrato de mapa
+-(CLLocationCoordinate2D) coordinate{
+    //construimos la struct CLLocation las estructuras tienen Make,
+    return CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]);
+}
+
+-(NSString *)title{
+    return self.nome;
+}
+-(NSString *)subtitle{
+    return self.email;
+}
 -(NSString *) description{
     return [NSString stringWithFormat:@"%@<%@>,%@",self.nome,self.email,[super description]];
 }
@@ -22,7 +34,8 @@
     [aCoder encodeObject:self.site forKey:@"sit"];
     [aCoder encodeObject:self.endereco forKey:@"end"];
     [aCoder encodeObject:self.foto forKey:@"fot"];
-    
+    [aCoder encodeObject:self.latitude forKey:@"lat"];
+    [aCoder encodeObject:self.longitude forKey:@"lon"];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
     //realizamos la carga de la informacion serializada
@@ -34,6 +47,8 @@
         self.site=[aDecoder decodeObjectForKey:@"sit"];
         self.endereco=[aDecoder decodeObjectForKey:@"end"];
         self.foto=[aDecoder decodeObjectForKey:@"fot"];
+        self.latitude=[aDecoder decodeObjectForKey:@"lat"];
+        self.longitude=[aDecoder decodeObjectForKey:@"lon"];
     }
     return self;
 }

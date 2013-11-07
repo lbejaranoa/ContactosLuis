@@ -114,7 +114,10 @@
         NSIndexPath * ip=[self.tableView indexPathForRowAtPoint:point];
         contactoSeleccionado=self.aContactos[ip.row];
         UIActionSheet * as=[[UIActionSheet alloc] initWithTitle:contactoSeleccionado.nome delegate: self cancelButtonTitle:@"Cancela" destructiveButtonTitle:nil otherButtonTitles:@"Ligar",@"Enviar email",@"Visualizar site",@"Abrir mapa", nil];
-        [as showInView:self.view];
+        //genera problema de boton cancela
+        //[as showInView:self.view];
+        //vista donde mostramos la vixsta del tab, se tiene que utilizar para evitar problema de button cancela
+        [as showFromTabBar:self.tabBarController.tabBar];
     }
 }
 -(void)abrirUrl:(NSString *)Url{

@@ -16,13 +16,12 @@
 -(id)init{
     self=[super init];
     if(self){
-//        self.aContactos=[[NSMutableArray alloc] init];
+        //self.aContactos=[[NSMutableArray alloc] init];
         self.navigationItem.title=@"cadastro";
         UIBarButtonItem * btnCadastro=[[UIBarButtonItem alloc] initWithTitle:@"Adiciona" style:UIBarButtonItemStylePlain target:self action:@selector(criaContacto)];
         //[self.navigationItem.rightBarButtonItem=btnCadastro];
         self.navigationItem.rightBarButtonItem=btnCadastro;
     }
-    
     return self;
 }
 -(id)initWithContacto:(OMCContacto *)contacto{
@@ -30,10 +29,39 @@
     if(self){
         self.contacto=contacto;
         self.navigationItem.title=@"Alteracion";UIBarButtonItem * btnCadastro=[[UIBarButtonItem alloc] initWithTitle:@"Altera" style:UIBarButtonItemStylePlain target:self action:@selector(alterContacto)];
-        //[self.navigationItem.rightBarButtonItem=btnCadastro];
+            //[self.navigationItem.rightBarButtonItem=btnCadastro];
         self.navigationItem.rightBarButtonItem=btnCadastro;
     }
     return self;
+}
+
+- (IBAction)buscarCoordenada:(id)sender {
+   //iniciamos activiti indicator
+    [self.outLetActivitiIndicator startAnimating];
+    //ocultamos boton
+    self.outLetBotonUbicar.hidden=YES;
+    //buscamos latitud y longitud de endereco
+    //utilizamos un web service de apple para realizar la funcionalidad
+    //utilizamos geocode e reverso para esto adicionamos corelocation se tiene que adicionar al proyecto el framework
+    //existe un objeto que hace geocoder CLGeocoder es assincrono, si fico esperando es polling, si pido que avise cuando termine se llama callback, dentro de completionhandler se coloca el codigo que quiere que ejecute
+    
+    CLGeocoder * geocoder=[[CLGeocoder alloc]init];
+    [geocoder geocodeAddressString:self.OutLetEndereco.text completionHandler: ^(NSArray * resultados,NSError * error)
+        {
+            //verificamos los resultados y el error
+            if(error==nil&&[resultados count]>0){
+                //recibimos el resultado
+                CLPlacemark * result =resultados[0];
+                //obtenemos la coordenada no tiene asterisco por que es un struct de c
+                CLLocationCoordinate2D coordenada=result.location.coordinate;
+                //obtenemos latitude y longitude transformamos tipos
+                self.outLetLatitude.text=[NSString stringWithFormat:@"%f",coordenada.latitude];
+                self.outLetLongitude.text=[NSString stringWithFormat:@"%f",coordenada.longitude];
+                [self.outLetActivitiIndicator stopAnimating];
+                self.outLetBotonUbicar.hidden=NO;
+            }
+        }
+     ];
 }
 
 - (IBAction)selecionaFoto:(id)sender {
@@ -78,6 +106,8 @@
         self.OutLetEmail.text=self.contacto.email;
         self.OutLetSite.text=self.contacto.site;
         self.OutLetEndereco.text=self.contacto.endereco;
+        self.outLetLatitude.text= [self.contacto.latitude stringValue];
+        self.outLetLongitude.text= [self.contacto.longitude stringValue];
     }
     
     //verificamos la foto para mostrarla
@@ -130,6 +160,8 @@
     self.contacto.site=self.OutLetSite.text;
     self.contacto.endereco=self.OutLetEndereco.text;
     self.contacto.telefono=self.OutLetTelefono.text;
+    self.contacto.latitude= [NSNumber numberWithFloat:[self.outLetLatitude.text floatValue]];
+    self.contacto.longitude= [NSNumber numberWithFloat:[self.outLetLongitude.text floatValue]];;
     return self.contacto;
     //[self.aContactos addObject:contacto];
     //NSLog(@"Nomes: %@",self.aContactos[0]);
