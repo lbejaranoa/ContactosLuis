@@ -16,4 +16,5 @@
     }
 @property NSInteger linhaSeleccionada;
 @property (weak,nonatomic) NSMutableArray *aContactos;
+@property (weak) NSManagedObject * contexto;
 @end

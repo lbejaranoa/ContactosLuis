@@ -29,10 +29,14 @@
 }
 -(void)exibeForm{
 //    NSLog(@"llamada");
+    
+    
     FormularioContactoViewControlerViewController * form=[[FormularioContactoViewControlerViewController alloc] init];
 //    form.aContactos=self.aContactos;
 //    [self presentViewController:form animated:YES completion:nil];
     form.delegate=self;
+    //inyextamos el contexto de base de datos
+    form.contexto=self.contexto;
     [self.navigationController pushViewController:form animated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

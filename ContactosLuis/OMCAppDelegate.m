@@ -11,6 +11,42 @@
 #import "ListaContactosViewControler.h"
 #import "ContactosNoMapaViewControler.h"
 @implementation OMCAppDelegate
+@synthesize contexto=_contexto;
+
+//implementacion de base de datos
+-(NSURL *) applicationDocumentsDirectory{
+    //administrador de archivos esto es un array y vamos a enviar el objeto necesario descubrimos el directorio
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask]lastObject];
+}
+//ahora creamos el managerobjects model
+-(NSManagedObjectModel *) managedObjectModel{
+    //ahora llamaos el Url del archivo y juntamos directorio y el archivo
+    NSURL * modelURL=[[NSBundle mainBundle] URLForResource:@"/Contactos" withExtension:@"mond"];
+    //creamos el managed
+    NSManagedObjectModel * model=[[NSManagedObjectModel alloc]initWithContentsOfURL:modelURL];
+    return model;
+}
+-(NSPersistentStoreCoordinator *) coordinator{
+   //creamos coordinador
+    NSPersistentStoreCoordinator * coordinator=[[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.managedObjectModel];
+    NSURL * docDir=self.applicationDocumentsDirectory;
+    NSURL * localBd=[docDir URLByAppendingPathComponent:@"contactos.sqlite"];
+    //ligamos coordinador
+    [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:localBd options:nil error:nil];
+    return coordinator;
+}
+
+//verificamos la existencia del contexto
+-(NSManagedObjectContext *)contexto{
+    if(_contexto!=nil)
+    {
+        return _contexto;
+    }
+    NSPersistentStoreCoordinator * coordinator=self.coordinator;
+    _contexto=[[NSManagedObjectContext alloc]init];
+    [_contexto setPersistentStoreCoordinator:coordinator];
+    return _contexto;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,6 +65,8 @@
     ListaContactosViewControler * lista=[[ListaContactosViewControler alloc] init];
     lista.navigationItem.title=@"Contactosinit";
     lista.aContactos=self.aContactos;
+    //inyectamos el contexto de base de datos para la lista
+    lista.contexto=self.contexto;
 
     //muestra formulario inicial
     UINavigationController * nav=[[UINavigationController alloc] initWithRootViewController:lista];
@@ -68,6 +106,8 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [NSKeyedArchiver archiveRootObject:self.aContactos toFile: self.nomeArquivo];
+    NSError *erro;
+    [self.contexto save:&erro];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

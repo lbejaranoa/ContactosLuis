@@ -147,8 +147,11 @@
     //[aNomes addObject:@"Wayne"];
     //[aNomes addObject:@"Ballmer"];
     //NSLog(@"Nomes: %@",self.aContactos);
+    
     if(!self.contacto){
-        self.contacto=[[OMCContacto alloc] init];
+        //self.contacto=[[OMCContacto alloc] init];
+        //por core data por padron no existe objeto no gerenciado
+        self.contacto =[NSEntityDescription insertNewObjectForEntityForName:@"Contacto" inManagedObjectContext:self.contexto];
     }
     //verificamos si usuario escojio foto
     if(self.botaoFoto.imageView.image){

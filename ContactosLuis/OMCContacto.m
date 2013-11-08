@@ -9,6 +9,8 @@
 #import "OMCContacto.h"
 
 @implementation OMCContacto
+//cambiamos atributos como llave valor por que es un diccionario el managed, avisamos a compilador caules son las propiedades que queremos que coredata cree
+@dynamic nome,telefono,site,email,endereco,latitude,longitude,foto;
 
 //adicionamos getter de propiedades de contrato de mapa
 -(CLLocationCoordinate2D) coordinate{

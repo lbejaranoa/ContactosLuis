@@ -13,4 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong,nonatomic) NSMutableArray *aContactos;
 @property (strong) NSString * nomeArquivo;
+//realonly para eviar se sobreescriba el contecto
+@property (strong,readonly) NSManagedObjectContext * contexto;
 @end

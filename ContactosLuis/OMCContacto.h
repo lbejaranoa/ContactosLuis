@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 //adicionamis el contrato para el mapa
-@interface OMCContacto : NSObject <NSCoding,MKAnnotation>
-
+//@interface OMCContacto : NSObject <NSCoding,MKAnnotation>
+//mudamos herencia para convertir a objeto gerenciado
+@interface OMCContacto : NSManagedObject <NSCoding,MKAnnotation>
 @property (strong,nonatomic) NSString * nome;
 @property (strong,nonatomic) NSString * telefono;
 @property (strong,nonatomic) NSString * email;

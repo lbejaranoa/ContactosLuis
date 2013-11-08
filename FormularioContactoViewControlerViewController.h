@@ -30,4 +30,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *outLetLongitude;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *outLetActivitiIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *botaoFoto;
+//aqui inyectamos el contexto
+@property (weak) NSManagedObject * contexto;
 @end
