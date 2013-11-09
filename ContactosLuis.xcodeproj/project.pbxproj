@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7109AAB6182DBFF8003C1E68 /* OMCTesteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7109AAB4182DBFF8003C1E68 /* OMCTesteViewController.m */; };
+		7109AAB7182DBFF8003C1E68 /* OMCTesteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7109AAB5182DBFF8003C1E68 /* OMCTesteViewController.xib */; };
 		71A2E5B01829B27300A69C21 /* ContactosNoMapaViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A2E5AE1829B27300A69C21 /* ContactosNoMapaViewControler.m */; };
 		71A2E5B31829B4E700A69C21 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A2E5B21829B4E700A69C21 /* MapKit.framework */; };
 		71A2E5C71829B9A400A69C21 /* gps.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A2E5C61829B9A400A69C21 /* gps.png */; };
@@ -40,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7109AAB3182DBFF8003C1E68 /* OMCTesteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMCTesteViewController.h; sourceTree = "<group>"; };
+		7109AAB4182DBFF8003C1E68 /* OMCTesteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCTesteViewController.m; sourceTree = "<group>"; };
+		7109AAB5182DBFF8003C1E68 /* OMCTesteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OMCTesteViewController.xib; sourceTree = "<group>"; };
 		71A2E5AD1829B27300A69C21 /* ContactosNoMapaViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactosNoMapaViewControler.h; path = ../ContactosNoMapaViewControler.h; sourceTree = "<group>"; };
 		71A2E5AE1829B27300A69C21 /* ContactosNoMapaViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactosNoMapaViewControler.m; path = ../ContactosNoMapaViewControler.m; sourceTree = "<group>"; };
 		71A2E5B21829B4E700A69C21 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -117,6 +122,9 @@
 		71E7221C1821AE97004626A7 = {
 			isa = PBXGroup;
 			children = (
+				7109AAB3182DBFF8003C1E68 /* OMCTesteViewController.h */,
+				7109AAB4182DBFF8003C1E68 /* OMCTesteViewController.m */,
+				7109AAB5182DBFF8003C1E68 /* OMCTesteViewController.xib */,
 				71F49A2E182C57210048BEE3 /* Modelo_Contactos.xcdatamodeld */,
 				71E7222E1821AE97004626A7 /* ContactosLuis */,
 				71E722271821AE97004626A7 /* Frameworks */,
@@ -253,6 +261,7 @@
 				71A2E5D01829B9C200A69C21 /* mapa-contatos.png in Resources */,
 				71A2E5D11829B9C200A69C21 /* mapa-contatos@2x.png in Resources */,
 				71A2E5D41829BAAC00A69C21 /* Vila Mariana.gpx in Resources */,
+				7109AAB7182DBFF8003C1E68 /* OMCTesteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +282,7 @@
 				71EC6EA8182854AD00ABA7A7 /* FormularioContactoViewControlerViewControllerDelegate.m in Sources */,
 				71A2E5B01829B27300A69C21 /* ContactosNoMapaViewControler.m in Sources */,
 				71F49A30182C57210048BEE3 /* Modelo_Contactos.xcdatamodeld in Sources */,
+				7109AAB6182DBFF8003C1E68 /* OMCTesteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -196,7 +196,7 @@
 
 -(void)criaContacto{
     OMCContacto *contacto=[self pegaDadosDoFormulario];
-    
+        
     //[self.aContactos addObject:contacto];
     //NSLog(@"Nomes: %@",self.aContactos[0]);
     //for(OMCContacto * c in self.aContactos)

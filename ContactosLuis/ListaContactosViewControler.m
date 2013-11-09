@@ -37,6 +37,7 @@
     form.delegate=self;
     //inyextamos el contexto de base de datos
     form.contexto=self.contexto;
+        
     [self.navigationController pushViewController:form animated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -93,6 +94,9 @@
     form.delegate = self;
     [self.navigationController pushViewController:form animated:YES];
 }
+
+#pragma mark - FormularioContactoViewControlerDelegate
+
 -(void) contactoAdicionado:(OMCContacto *)Contato{
     [self.aContactos addObject:Contato];
     self.linhaSeleccionada=[self.aContactos indexOfObject:Contato];
@@ -104,6 +108,9 @@
     //NSInteger indice=[self.aContactos indexOfObject:contato];
     //NSLog(@"Indice do contato: %d",indice);
 }
+
+#pragma mark -
+
 -(void) viewDidLoad{
     UILongPressGestureRecognizer * gr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(exibeAcoes:)];
     [self.tableView addGestureRecognizer:gr];
@@ -185,4 +192,9 @@
     //retiramos pantalla de error si es que existiera
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)contatoAdicionado:(OMCContacto *)contato {
+    NSLog(@"[[[!]]]Contato adicionado: %@", contato);
+}
+
 @end

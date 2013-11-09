@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 infinitodhd. All rights reserved.
 //
 
+#import "OMCContacto.h"
+
 #import <Foundation/Foundation.h>
 #import <MessageUI/MessageUI.h>
 #import "FormularioContactoViewControlerViewControllerDelegate.h"
@@ -16,5 +18,6 @@
     }
 @property NSInteger linhaSeleccionada;
 @property (weak,nonatomic) NSMutableArray *aContactos;
-@property (weak) NSManagedObject * contexto;
+@property (weak) NSManagedObjectContext * contexto;
+
 @end

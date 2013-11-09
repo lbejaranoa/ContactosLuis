@@ -15,4 +15,18 @@
 @property (strong) NSString * nomeArquivo;
 //realonly para eviar se sobreescriba el contecto
 @property (strong,readonly) NSManagedObjectContext * contexto;
+-(NSURL *) applicationDocumentsDirectory;
+-(NSManagedObjectModel *) managedObjectModel;
+-(NSPersistentStoreCoordinator *) coordinator;
+-(NSManagedObjectContext *)contexto;
+-(void)salvaContexto;
+-(void)insereDados;
+-(void)buscarContactos;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+- (void)applicationWillResignActive:(UIApplication *)application;
+- (void)applicationDidEnterBackground:(UIApplication *)application;
+- (void)applicationWillEnterForeground:(UIApplication *)application;
+- (void)applicationDidBecomeActive:(UIApplication *)application;
+- (void)applicationWillTerminate:(UIApplication *)application;
+
 @end
